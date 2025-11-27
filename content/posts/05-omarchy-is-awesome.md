@@ -1,7 +1,7 @@
 +++
 title = '05 Omarchy Is Awesome'
 date = 2025-08-31T23:48:09-03:00
-draft = true
+draft = false
 +++
 
 At this point, if you don't live under a rock, you should've heard of Omarchy. I don't wanna say that is a distro since it isn't, but is an arch that comes with an script that configures and install everything, so you can have an development ready environment. 
