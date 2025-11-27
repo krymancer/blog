@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "content/posts/04-back-to-arch.md",
+                "file": "content/posts/05-omarchy-is-awesome.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "04-back-to-arch"
+              "title": "05-omarchy-is-awesome"
             }
           }
         ],
@@ -186,8 +186,11 @@
   },
   "active": "138be4014e9fd45b",
   "lastOpenFiles": [
-    "content/posts/03-devlog-buzz.md",
+    "content/posts/06-search-is-dead.md",
+    "content/posts/05-omarchy-is-awesome.md",
+    "attachments/Pasted image 20250831234838.png",
     "content/posts/04-back-to-arch.md",
+    "content/posts/03-devlog-buzz.md",
     "README.md",
     "content/posts/02-cc-json-parser.md",
     "content/posts/01-cc-wt.md",

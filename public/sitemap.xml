@@ -2,28 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/posts/03-devlog-buzz/</loc>
+    <loc>https://krymancer.dev/</loc>
+    <lastmod>2025-08-31T23:48:09-03:00</lastmod>
+  </url><url>
+    <loc>https://krymancer.dev/posts/</loc>
+    <lastmod>2025-08-31T23:48:09-03:00</lastmod>
+  </url><url>
+    <loc>https://krymancer.dev/posts/04-back-to-arch/</loc>
+    <lastmod>2025-08-26T02:01:20-03:00</lastmod>
+  </url><url>
+    <loc>https://krymancer.dev/posts/03-devlog-buzz/</loc>
     <lastmod>2025-07-21T01:27:14-03:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
-    <lastmod>2025-07-21T01:27:14-03:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2025-07-21T01:27:14-03:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/02-cc-json-parser/</loc>
+    <loc>https://krymancer.dev/posts/02-cc-json-parser/</loc>
     <lastmod>2024-06-18T22:22:57-03:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/01-cc-wt/</loc>
+    <loc>https://krymancer.dev/posts/01-cc-wt/</loc>
     <lastmod>2024-06-18T18:08:37-03:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/00-demo-post/</loc>
+    <loc>https://krymancer.dev/posts/00-demo-post/</loc>
     <lastmod>2024-06-05T20:50:06-03:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/archive/</loc>
+    <loc>https://krymancer.dev/archive/</loc>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://krymancer.dev/categories/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://krymancer.dev/tags/</loc>
   </url>
 </urlset>
