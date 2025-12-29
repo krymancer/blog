@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=42851&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>My First Zig API | krymancer.dev</title>
+<title>05 Omarchy Is Awesome | krymancer.dev</title>
 <meta name="keywords" content="">
-<meta name="description" content="There&rsquo;s this event, which is conceived by Zanfranceschi. Essentially, Zan gave us a specification that we followed to implement an API. For this first quarter edition of 2024, we have a kind of &ldquo;Bank&rdquo; where some pre-registered clients check their statements and make transactions. If you want to read more details, I invite you to take a look at the repository of the event, where you can find the specifications along with the rest of the participation instructions and related information.">
+<meta name="description" content="At this point, if you don&rsquo;t live under a rock, you should&rsquo;ve heard of Omarchy. I don&rsquo;t wanna say that is a distro since it isn&rsquo;t, but is an arch that comes with an script that configures and install everything, so you can have an development ready environment.
+A few things before we continue, you might or might now know, but I&rsquo;ve been using linux for a decade at this point, and arch for at least 4 years in a daily basis. I&rsquo;ve become attached to Arch linux and is my distro of choice whenever I can (WSL, Docker containers if makes sense, and so on). I already used hyprland and had spend countless hours customizing and tailoring my experience and making the system feel like my own.
+This is fun and I learn so much, feel in love with so much great open source projects and programs, some of them really changed the way I think and make things. But at some point you just become tired. Unfortunately this happened to me.">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/posts/00-demo-post/">
+<link rel="canonical" href="http://localhost:42851/posts/05-omarchy-is-awesome/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.64a76f9c1e4a8e02f889b7042db41e893e9ad071054f4d04c46a755b971023a2.css" integrity="sha256-ZKdvnB5KjgL4ibcELbQeiT6a0HEFT00ExGp1W5cQI6I=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link rel="icon" href="http://localhost:42851/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:42851/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:42851/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:42851/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:42851/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/00-demo-post/">
+<link rel="alternate" hreflang="en" href="http://localhost:42851/posts/05-omarchy-is-awesome/">
 <noscript>
     <style>
         #theme-toggle,
@@ -73,7 +75,7 @@
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="krymancer.dev (Alt + H)">krymancer.dev</a>
+            <a href="http://localhost:42851/" accesskey="h" title="krymancer.dev (Alt + H)">krymancer.dev</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -99,7 +101,7 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/archive" title="Archive">
+                <a href="http://localhost:42851/archive" title="Archive">
                     <span>Archive</span>
                 </a>
             </li>
@@ -134,25 +136,17 @@
   <header class="post-header">
     
     <h1 class="post-title entry-hint-parent">
-      My First Zig API
+      05 Omarchy Is Awesome
     </h1>
-    <div class="post-meta"><span title='2024-06-05 20:50:06 -0300 -03'>June 5, 2024</span>
+    <div class="post-meta"><span title='2025-08-31 23:48:09 -0300 -03'>August 31, 2025</span>
 
 </div>
   </header> 
-  <div class="post-content"><p>There&rsquo;s this event, which is conceived by Zanfranceschi. Essentially, Zan gave us a specification that we followed to implement an API. For this first quarter edition of 2024, we have a kind of &ldquo;Bank&rdquo; where some pre-registered clients check their statements and make transactions. If you want to read more details, I invite you to take a look at the repository of the <a href="https://github.com/zanfranceschi/rinha-de-backend-2024-q1">event</a>, where you can find the specifications along with the rest of the participation instructions and related information.</p>
-<p>With the API created, the idea is to use a load balancer to manage two instances of the API. This edition focuses on data consistency. We used docker-compose to deploy images for the instances, the load balancer, and also a database. As of the writing of this article (07/03/2024), we still don&rsquo;t have what will be used to obtain the results from each API. However, for now, we&rsquo;re using <a href="https://gatling.io/">Gatling</a> to conduct stress tests and some validations, and we&rsquo;re using p75 to get an idea of how the API behaves (if you&rsquo;re not familiar with p75, take a look <a href="https://en.wikipedia.org/wiki/Percentile">here</a>).</p>
-<p>The first thing I usually do to solve this kind of thing is to create the API in memory for some initial tests, mainly for validation purposes and to check if everything is okay and according to the specification. At this point, I had already decided to write the API in a language I didn&rsquo;t have much experience with, such as Go, Rust, or Zig. But looking at the other submissions, there were already many APIs in Go and Rust, so I tried to diversify and chose Zig. Considering that I already had experience in Rust and Go, it would be interesting to write my first program in Zig.</p>
-<p><a href="https://ziglang.org/">Zig</a> is a relatively new language, so not all of its content and documentation are as elaborate. I relied extensively on reading and understanding source code. Despite everything, Zig has a <a href="https://ziglang.org/documentation/master/std/#A;std">Std lib</a> that is quite comprehensive. That&rsquo;s where I started my adventure. I tried to use <a href="https://ziglang.org/documentation/master/std/#A;std:http">std.http</a>, and I didn&rsquo;t have a very good experience with it. The API isn&rsquo;t very beginner-friendly, so I tried to look for a framework. The first framework I tried to use was <a href="https://github.com/zigzap/zap/">Zap</a>, which is much easier to use than std.http. However, I missed some features, such as the utilization of router parameters, but nothing that prevented me from using it. I wrote a small URL parser with <a href="https://ziglang.org/documentation/master/std/#A;std:zig.Tokenizer">std.Tokenizer</a> (as I mentioned, the std lib is quite comprehensive), and I managed to make the first functional version of the API with in-memory data.</p>
-<p>But then the self-inflicted issues started: memory leaks, deadlocks, and inconsistencies because I wasn&rsquo;t using locks or anything in the requests. Even though this had nothing to do with the framework, I ended up looking for another framework and stumbled upon <a href="https://github.com/karlseguin/http.zig/">http.zig/httpz</a>, which the developer <a href="https://github.com/karlseguin">karlseguin</a> also had a <a href="https://github.com/karlseguin/pg.zig">library to use with Postgres</a>, which was the database I already planned to use.</p>
-<p>The migration was quite smooth, mainly because there wasn&rsquo;t really a migration; I decided to start from scratch, <a href="https://github.com/Krymancer/rinha-de-backend-2024-q1-zig/commit/150847e36e4760e4951468b85aca32b4cf2ab61f">as you can see in this commit</a>. But that wasn&rsquo;t a bad thing; with the knowledge I had gained using Zap, I was much faster and managed to implement everything back in record time.</p>
-<p>The connection with the database was also very smooth; I owe a lot to <a href="https://github.com/karlseguin">karlseguin</a> for making everything easier with his libraries. I didn&rsquo;t have any problems integrating the API with the database; the only part where I had some difficulty was using the record type from Postgres, which was returned by a stored procedure I was using in the database. Since the API had a method to receive raw data, I &ldquo;solved&rdquo; this problem by writing a small parser that used <a href="https://ziglang.org/documentation/master/std/#A;std:mem.readInt">std.mem.readInt</a> to convert the bytes into integers, as that was all I needed. But since I wasn&rsquo;t sure if this was a good idea, I created an <a href="https://github.com/karlseguin/pg.zig/issues/11">issue in the pg.zig repo</a> to ask, and within hours, the creator of the library made a PR that made using Postgres records trivial (as always, karlseguin saved me).</p>
-<p>After solving these problems, I created a docker-compose along with a database and an instance of Nginx and started performing stress tests.</p>
-<p>Not surprisingly, I had some more memory leaks, which was to be expected in my first experience; it&rsquo;s also been a few years since I programmed in C++ and C, so I was rusty. I managed to avoid the leak and a deadlock by deallocating a result from a database query that I had forgotten about and also deallocating an array list (similar to the vector in C++).</p>
-<p>With these changes, I managed to achieve incredible results, in my opinion.</p>
-<p><img alt="Image description" loading="lazy" src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/5l7bqakj8xccu2nan8dm.jpeg"></p>
-<p>4ms p75, much better than I anticipated.</p>
-<p>I just want to thank Zanfranceschi, Karlseguin, and the Zig community on Discord, where some people answered some of my doubts. Writing this API in Zig was a great experience, and I really loved the language, and I hope to create many cool things with it in the future!</p>
+  <div class="post-content"><p>At this point, if you don&rsquo;t live under a rock, you should&rsquo;ve heard of Omarchy. I don&rsquo;t wanna say that is a distro since it isn&rsquo;t, but is an arch that comes with an script that configures and install everything, so you can have an development ready environment.</p>
+<p>A few things before we continue, you might or might now know, but I&rsquo;ve been using linux for a decade at this point, and arch for at least 4 years in a daily basis. I&rsquo;ve become attached to Arch linux and is my distro of choice whenever I can (WSL, Docker containers if makes sense, and so on). I already used hyprland and had spend countless hours customizing and tailoring my experience and making the system feel like my own.
+This is fun and I learn so much, feel in love with so much great open source projects and programs, some of them really changed the way I think and make things. But at some point you just become tired. Unfortunately this happened to me.</p>
+<p>And a few months after that I discover omarchy, and I couldn&rsquo;t believe. SImply, impressive, an fully configured, arch linux installation, with working audio, bluetooth, wifi, multi monitor setup. I&rsquo;ve put so may hours in installing and configuring arch linux in different devices that I has impressed by this alone.  The other part that makes me want to continue using omarchy is the community, It&rsquo;s an active community that not only march toward making the scripts and solving problems, but also helps different people achieve things, It&rsquo;s not like Arch, hyprland, and many other tools omarchy uses hadn&rsquo;t a great community, but it&rsquo;s the centralization of people roughly using the same set of tools and scripts that made possible such an impressive set of tools, for customizing, working and just achieve anything with an machine.</p>
+<p>After trying, and failing, to use nixos (more on this latter) I finally found something that I can just load an a computer and start using in more or less 5 minutes with almost no configuration. I like omarchy very much, you should try it.</p>
 
 
   </div>
@@ -179,7 +173,7 @@
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="http://localhost:1313/">krymancer.dev</a></span>
+        <span>&copy; 2025 <a href="http://localhost:42851/">krymancer.dev</a></span>
 </footer>
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">

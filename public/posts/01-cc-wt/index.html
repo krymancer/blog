@@ -10,7 +10,7 @@
 <meta name="description" content="I found myself not really excited to code anything and that was really bothering me. I was always excited to code something, learning something new and not being able to enjoy it or have the motivation to do it was really driving me crazy. I don&rsquo;t really know what was the cause but I can&rsquo;t do anytthing, I felt like I was justing being lazy, tried to read a book, or take a time for myself but nothing really helped. So I started to serching for a new project that I cloud make and be excited about, nothing really caught my eye, same basic projects as aways, frontend projects are either too simple or have some gimmic that I didn&rsquo;t really care at the moment, backend projects are always CRUD at this point. I was really lost, I didn&rsquo;t know what to do, I was really sad about it.">
 <meta name="author" content="">
 <link rel="canonical" href="http://localhost:1313/posts/01-cc-wt/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.64defa64f8405405ba3327fa876e86598a227d1ed0062bcad182ca7402a3d923.css" integrity="sha256-ZN76ZPhAVAW6Myf6h26GWYoifR7QBivK0YLKdAKj2SM=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.64a76f9c1e4a8e02f889b7042db41e893e9ad071054f4d04c46a755b971023a2.css" integrity="sha256-ZKdvnB5KjgL4ibcELbQeiT6a0HEFT00ExGp1W5cQI6I=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -192,17 +192,17 @@ The frist feature of the program that I implemented was the <code>-c</code> opti
 </span></span></code></pre></div><p>The <code>-m</code> option counts the number of characters. This is straightforward unless the locale supports multibyte characters. For simplicity, I treated each byte as a character, just the lenght of the array.
 With all of that out the way, lets talk about the flags. My idea was quite simple, I read the arguments, if the argument starts with a <code>-</code> I treat it as a flag, if not is a file path, flags can be combined, so you have the option to pass either <code>-c -l -w</code> or <code>-clw</code> and it will work the same way. I also added a check to see if the flag is valid, if not it will panic.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> args <span style="color:#f92672">=</span> env::args().skip(<span style="color:#ae81ff">1</span>); <span style="color:#75715e">// Skips the frist argument in the command (most likely the binary name i.e: ccwd ....)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> flags: Vec<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">char</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">vec!</span>[];
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> flags: Vec<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">char</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">vec!</span>[];
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> files_paths: Vec<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">vec!</span>[];
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> avaliable_flags <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;c&#39;</span>, <span style="color:#e6db74">&#39;m&#39;</span>, <span style="color:#e6db74">&#39;l&#39;</span>, <span style="color:#e6db74">&#39;L&#39;</span>, <span style="color:#e6db74">&#39;w&#39;</span>]; <span style="color:#75715e">// All avaliable flags
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> arg <span style="color:#66d9ef">in</span> args {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> arg.starts_with(<span style="color:#e6db74">&#39;-&#39;</span>) { <span style="color:#75715e">// if the argument start if a - it must be a flag or multiple flags
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">for</span> flag <span style="color:#66d9ef">in</span> arg.chars().skip(<span style="color:#ae81ff">1</span>) { <span style="color:#75715e">// skiping the -
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                flags.push(flag);
+</span></span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> flag <span style="color:#66d9ef">in</span> arg.chars().skip(<span style="color:#ae81ff">1</span>) { <span style="color:#75715e">// skiping the -
+</span></span></span><span style="display:flex;"><span>                flags.push(flag);
 </span></span><span style="display:flex;"><span>            }
 </span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> { <span style="color:#75715e">// otherwise is treated like a file path
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            files_paths.push(arg);
+</span></span></span><span style="display:flex;"><span>            files_paths.push(arg);
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
