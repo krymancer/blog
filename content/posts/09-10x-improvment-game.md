@@ -46,29 +46,61 @@ For good measure I had some ideas and implement somethings, for example, frustum
 
 With all of that we hit 48-53 FPS with 1000 bees.
 
-So long story short:
-
-1. **Per-frame flower caching** - Eliminated O(bees × flowers) searches.
-2. **Flower target count HashMap** - O(1) bee density checks instead of O(bees).
-3. **Grid position HashMap** - O(1) spatial lookups for pollination checks.
-4. **Search cooldown** - Reduces redundant searches when no flowers available.
-5. **Frustum culling** - Skips rendering off-screen bees.
-6. **Metrics system** - Critical for identifying the real bottleneck.
-
-What didn't really helped:
-
-1. **Direct iterators for lifespan/scale_sync** - Minimal impact. These weren't the bottleneck.
-2. **Initial search cooldown without caching** - Helped but didn't solve the core O(n²) problem.
-
 | Metric | Before | After Phase 2 | After Phase 3 | Total Improvement |
 |--------|--------|---------------|---------------|-------------------|
 | FPS (1000 bees) | 4-7 | 43-44 | 48-53 | **~12x** |
 | Frame time | 800-900ms spikes | 22-25ms | 18-22ms | **~45x** |
 | Frame spikes | Constant | None | None | Eliminated |
 
-Still I have some ideas to improve this even more, I think that 1000 bees are excessive for the gameplay plans I have today but is nice to have the peace of mind that it is running great on a modest machine, still I want to hit at least 60 fps with 10k bees.
+So I actually went ahead and implemented some new ideas, and the results are way better than I expected. I was aiming for 60 FPS with 10k bees.
 
-- **Spatial hashing for bee-to-bee queries** - If bees need to interact with each other
-- **Staggered updates** - Update different bee groups on different frames
-- **Job system** - Parallelize bee AI updates across CPU cores
-- **GPU instancing** - Batch bee rendering into a single draw call
+The biggest win was **staggered AI updates**. The idea is simple: instead of running the full behavior logic for all bees every time, I split them into 4 groups and only update one group per frame. But still update all bees every frame, just the expensive behavior (finding flowers, checking targets) happens on 1/4 of them at a time.
+
+```zig
+const STAGGER_GROUPS: usize = 4;
+var currentStaggerGroup: usize = 0;
+
+if (beeIndex % STAGGER_GROUPS != currentStaggerGroup) {
+    moveTowards(position, targetPos, deltaTime);
+    continue;
+}
+// ... behavior
+```
+
+This alone reduced per-frame work by like 75%. The deltaTime is scaled to compensate so bees don't move slower.
+
+I also pre-built a render list for bees. Before, I was doing HashMap lookups for each bee during rendering - position, sprite, scale, AI state. Now I build a flat array with just the data I need to draw, then loop through it. Same texture for all bees means raylib batches them automatically.
+
+```zig
+const BeeRenderData = struct {
+    x: f32,
+    y: f32,
+    scale: f32,
+    carryingPollen: bool,
+};
+var beeRenderList: [16384]BeeRenderData = undefined;
+```
+
+Some other stuff that helped:
+
+- **HashMap pre-allocation** - I was getting random frame spikes and couldn't figure out why. Turns out the HashMaps were resizing during gameplay. Pre-allocating capacity for 16k entities fixed it.
+- **O(1) entity counting** - I was iterating all bees just to count them for the UI. `HashMap.count()` exists, not sure why I wasn't using it.
+- **Conditional scale sync** - The scale sync system was updating every bee every frame even when you're not zooming. Added a check for when grid scale actually changes.
+- **Frustum culling on the grid** - When zoomed in, lots of tiles are off-screen. Skip drawing them.
+
+The flower growth system was also allocating memory every frame because I was using `queryEntitiesWithFlowerGrowth()` which copies entities into a new list. Switched to a direct iterator, zero allocations.
+
+| Metric | Before (1k bees) | After (10k bees) |
+|--------|------------------|------------------|
+| FPS | 48-53 | **120-150** |
+| Frame time | 18-22ms | **5-10ms** |
+| Bees | 1,000 | **10,000** |
+
+So yeah, 10x more entities running at 2-3x better frame times.
+
+Things I thought I'd need but didn't:
+- Multithreading - single thread is fast enough
+- GPU instancing - raylib's automatic batching works when you draw same texture consecutively  
+- Spatial partitioning - the grid HashMap was enough
+
+The lesson here is: stop doing stupid things before trying to do smart things.

@@ -161,20 +161,6 @@
 </code></pre><p>with this we got from 4-7 FPS to 43-44 FPS, a huge improvement and finally I was happy with this result.</p>
 <p>For good measure I had some ideas and implement somethings, for example, frustum culling, to do not render entities that wasn&rsquo;t in the viewport, skipping them, I also added an grip position hash map to O(1) flower lookup, that we used on some methods in the bee behavior, for pollination.</p>
 <p>With all of that we hit 48-53 FPS with 1000 bees.</p>
-<p>So long story short:</p>
-<ol>
-<li><strong>Per-frame flower caching</strong> - Eliminated O(bees × flowers) searches.</li>
-<li><strong>Flower target count HashMap</strong> - O(1) bee density checks instead of O(bees).</li>
-<li><strong>Grid position HashMap</strong> - O(1) spatial lookups for pollination checks.</li>
-<li><strong>Search cooldown</strong> - Reduces redundant searches when no flowers available.</li>
-<li><strong>Frustum culling</strong> - Skips rendering off-screen bees.</li>
-<li><strong>Metrics system</strong> - Critical for identifying the real bottleneck.</li>
-</ol>
-<p>What didn&rsquo;t really helped:</p>
-<ol>
-<li><strong>Direct iterators for lifespan/scale_sync</strong> - Minimal impact. These weren&rsquo;t the bottleneck.</li>
-<li><strong>Initial search cooldown without caching</strong> - Helped but didn&rsquo;t solve the core O(n²) problem.</li>
-</ol>
 <table>
   <thead>
       <tr>
@@ -209,13 +195,67 @@
       </tr>
   </tbody>
 </table>
-<p>Still I have some ideas to improve this even more, I think that 1000 bees are excessive for the gameplay plans I have today but is nice to have the peace of mind that it is running great on a modest machine, still I want to hit at least 60 fps with 10k bees.</p>
+<p>So I actually went ahead and implemented some new ideas, and the results are way better than I expected. I was aiming for 60 FPS with 10k bees.</p>
+<p>The biggest win was <strong>staggered AI updates</strong>. The idea is simple: instead of running the full behavior logic for all bees every time, I split them into 4 groups and only update one group per frame. But still update all bees every frame, just the expensive behavior (finding flowers, checking targets) happens on 1/4 of them at a time.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-zig" data-lang="zig"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> STAGGER_GROUPS<span style="color:#f92672">:</span> <span style="color:#66d9ef">usize</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> currentStaggerGroup<span style="color:#f92672">:</span> <span style="color:#66d9ef">usize</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (beeIndex <span style="color:#f92672">%</span> STAGGER_GROUPS <span style="color:#f92672">!=</span> currentStaggerGroup) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">moveTowards</span>(position, targetPos, deltaTime);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">continue</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ... behavior
+</span></span></span></code></pre></div><p>This alone reduced per-frame work by like 75%. The deltaTime is scaled to compensate so bees don&rsquo;t move slower.</p>
+<p>I also pre-built a render list for bees. Before, I was doing HashMap lookups for each bee during rendering - position, sprite, scale, AI state. Now I build a flat array with just the data I need to draw, then loop through it. Same texture for all bees means raylib batches them automatically.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-zig" data-lang="zig"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> BeeRenderData <span style="color:#f92672">=</span> <span style="color:#66d9ef">struct</span> {
+</span></span><span style="display:flex;"><span>    x<span style="color:#f92672">:</span> <span style="color:#66d9ef">f32</span>,
+</span></span><span style="display:flex;"><span>    y<span style="color:#f92672">:</span> <span style="color:#66d9ef">f32</span>,
+</span></span><span style="display:flex;"><span>    scale<span style="color:#f92672">:</span> <span style="color:#66d9ef">f32</span>,
+</span></span><span style="display:flex;"><span>    carryingPollen<span style="color:#f92672">:</span> <span style="color:#66d9ef">bool</span>,
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> beeRenderList<span style="color:#f92672">:</span> [<span style="color:#ae81ff">16384</span>]BeeRenderData <span style="color:#f92672">=</span> <span style="color:#66d9ef">undefined</span>;
+</span></span></code></pre></div><p>Some other stuff that helped:</p>
 <ul>
-<li><strong>Spatial hashing for bee-to-bee queries</strong> - If bees need to interact with each other</li>
-<li><strong>Staggered updates</strong> - Update different bee groups on different frames</li>
-<li><strong>Job system</strong> - Parallelize bee AI updates across CPU cores</li>
-<li><strong>GPU instancing</strong> - Batch bee rendering into a single draw call</li>
+<li><strong>HashMap pre-allocation</strong> - I was getting random frame spikes and couldn&rsquo;t figure out why. Turns out the HashMaps were resizing during gameplay. Pre-allocating capacity for 16k entities fixed it.</li>
+<li><strong>O(1) entity counting</strong> - I was iterating all bees just to count them for the UI. <code>HashMap.count()</code> exists, not sure why I wasn&rsquo;t using it.</li>
+<li><strong>Conditional scale sync</strong> - The scale sync system was updating every bee every frame even when you&rsquo;re not zooming. Added a check for when grid scale actually changes.</li>
+<li><strong>Frustum culling on the grid</strong> - When zoomed in, lots of tiles are off-screen. Skip drawing them.</li>
 </ul>
+<p>The flower growth system was also allocating memory every frame because I was using <code>queryEntitiesWithFlowerGrowth()</code> which copies entities into a new list. Switched to a direct iterator, zero allocations.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Metric</th>
+          <th>Before (1k bees)</th>
+          <th>After (10k bees)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>FPS</td>
+          <td>48-53</td>
+          <td><strong>120-150</strong></td>
+      </tr>
+      <tr>
+          <td>Frame time</td>
+          <td>18-22ms</td>
+          <td><strong>5-10ms</strong></td>
+      </tr>
+      <tr>
+          <td>Bees</td>
+          <td>1,000</td>
+          <td><strong>10,000</strong></td>
+      </tr>
+  </tbody>
+</table>
+<p>So yeah, 10x more entities running at 2-3x better frame times.</p>
+<p>Things I thought I&rsquo;d need but didn&rsquo;t:</p>
+<ul>
+<li>Multithreading - single thread is fast enough</li>
+<li>GPU instancing - raylib&rsquo;s automatic batching works when you draw same texture consecutively</li>
+<li>Spatial partitioning - the grid HashMap was enough</li>
+</ul>
+<p>The lesson here is: stop doing stupid things before trying to do smart things.</p>
 
 
   </div>

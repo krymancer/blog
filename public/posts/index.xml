@@ -13,7 +13,7 @@
       <link>http://localhost:1313/posts/09-10x-improvment-game/</link>
       <pubDate>Mon, 29 Dec 2025 15:39:00 -0300</pubDate>
       <guid>http://localhost:1313/posts/09-10x-improvment-game/</guid>
-      <description>&lt;p&gt;To be fair, I did not work on the game for a while, and since the last time I wrote about in here I had made A LOT of changes, I implemented ECS instead of using a more OO approach and basically rewrote the entire thing. I was trying to make the gameplay more exciting so I was pretty invested on writing code for the bee behaviour (I shoud give you some background here but the game was kinda an POC and nothing really happed, you can read the other post about it {{ ref 03-devlog-buzz}})&lt;/p&gt;</description>
+      <description>&lt;p&gt;To be fair, I did not work on the game for a while, and since the last time I wrote about in here I had made A LOT of changes, I implemented ECS instead of using a more OO approach and basically rewrote the entire thing. I was trying to make the gameplay more exciting so I was pretty invested on writing code for the bee behavior (I shoud give you some background here but the game was kinda an POC and nothing really worked, you can &lt;a href=&#34;http://localhost:1313/posts/03-devlog-buzz/&#34;&gt;read the other post about it &lt;/a&gt;)&lt;/p&gt;</description>
     </item>
     <item>
       <title>06 Search Is Dead</title>
