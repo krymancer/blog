@@ -1,5 +1,5 @@
 +++
-title = '03 Devlog Buzz'
+title = 'Devlog Buzz'
 date = 2025-07-21T01:27:14-03:00
 draft = false
 +++

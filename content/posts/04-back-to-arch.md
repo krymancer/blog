@@ -1,5 +1,5 @@
 +++
-title = '04 Back to Arch'
+title = 'Back to Arch'
 date = 2025-08-26T02:01:20-03:00
 draft = false
 +++

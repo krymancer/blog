@@ -9,14 +9,14 @@
     <lastBuildDate>Mon, 29 Dec 2025 15:39:00 -0300</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>09 10x Improvment Game</title>
-      <link>http://localhost:1313/posts/09-10x-improvment-game/</link>
+      <title>Back to BUZZness</title>
+      <link>http://localhost:1313/posts/09-back-to-buzzness/</link>
       <pubDate>Mon, 29 Dec 2025 15:39:00 -0300</pubDate>
-      <guid>http://localhost:1313/posts/09-10x-improvment-game/</guid>
+      <guid>http://localhost:1313/posts/09-back-to-buzzness/</guid>
       <description>&lt;p&gt;To be fair, I did not work on the game for a while, and since the last time I wrote about in here I had made A LOT of changes, I implemented ECS instead of using a more OO approach and basically rewrote the entire thing. I was trying to make the gameplay more exciting so I was pretty invested on writing code for the bee behavior (I shoud give you some background here but the game was kinda an POC and nothing really worked, you can &lt;a href=&#34;http://localhost:1313/posts/03-devlog-buzz/&#34;&gt;read the other post about it &lt;/a&gt;)&lt;/p&gt;</description>
     </item>
     <item>
-      <title>06 Search Is Dead</title>
+      <title>Search Is Dead</title>
       <link>http://localhost:1313/posts/06-search-is-dead/</link>
       <pubDate>Wed, 26 Nov 2025 23:05:34 -0300</pubDate>
       <guid>http://localhost:1313/posts/06-search-is-dead/</guid>
@@ -24,14 +24,14 @@
 &lt;p&gt;I started using computers from a very young age, at least in my community, like 7 or 8 years old. My internet was BAD, I mean it, BAD, in the later 2000&amp;rsquo;s internet was not too bad, at least not in where I live, but we couldn&amp;rsquo;t afford it, so I used some 2 digit Kbps internet for a lot of time. This with being an impatient child made me optimize a lot of things that I did in the computer, for download games, videos, and most importantly searching.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>04 Back to Arch</title>
+      <title>Back to Arch</title>
       <link>http://localhost:1313/posts/04-back-to-arch/</link>
       <pubDate>Tue, 26 Aug 2025 02:01:20 -0300</pubDate>
       <guid>http://localhost:1313/posts/04-back-to-arch/</guid>
       <description>&lt;p&gt;I don&amp;rsquo;t remember exactly when I started to using linux, probably I had my frist real contact in 2014 trying ubuntu, debian and kali. It was years latter, in college, that I tried to run daily. I was so comfortable in windows so I didn&amp;rsquo;t really saw an reason to change. Debian was my first daily option, I was in a class about embedded systems programming and we need to use a gcc cross compiler, some programs to create linux images, copy code to development boards memory and stuff. The professor really wanted us to use linux, my colleges dual booted their machines but I took this as an opportunity to really try to daily drive linux.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>03 Devlog Buzz</title>
+      <title>Devlog Buzz</title>
       <link>http://localhost:1313/posts/03-devlog-buzz/</link>
       <pubDate>Mon, 21 Jul 2025 01:27:14 -0300</pubDate>
       <guid>http://localhost:1313/posts/03-devlog-buzz/</guid>
@@ -57,9 +57,9 @@
     </item>
     <item>
       <title>My First Zig API</title>
-      <link>http://localhost:1313/posts/00-demo-post/</link>
+      <link>http://localhost:1313/posts/00-first-zig-api/</link>
       <pubDate>Wed, 05 Jun 2024 20:50:06 -0300</pubDate>
-      <guid>http://localhost:1313/posts/00-demo-post/</guid>
+      <guid>http://localhost:1313/posts/00-first-zig-api/</guid>
       <description>&lt;p&gt;There&amp;rsquo;s this event, which is conceived by Zanfranceschi. Essentially, Zan gave us a specification that we followed to implement an API. For this first quarter edition of 2024, we have a kind of &amp;ldquo;Bank&amp;rdquo; where some pre-registered clients check their statements and make transactions. If you want to read more details, I invite you to take a look at the repository of the &lt;a href=&#34;https://github.com/zanfranceschi/rinha-de-backend-2024-q1&#34;&gt;event&lt;/a&gt;, where you can find the specifications along with the rest of the participation instructions and related information.&lt;/p&gt;</description>
     </item>
   </channel>

@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/posts/09-10x-improvment-game/</loc>
+    <loc>http://localhost:1313/posts/09-back-to-buzzness/</loc>
     <lastmod>2025-12-29T15:39:00-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/</loc>
@@ -26,7 +26,7 @@
     <loc>http://localhost:1313/posts/01-cc-wt/</loc>
     <lastmod>2024-06-18T18:08:37-03:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/00-demo-post/</loc>
+    <loc>http://localhost:1313/posts/00-first-zig-api/</loc>
     <lastmod>2024-06-05T20:50:06-03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/archive/</loc>

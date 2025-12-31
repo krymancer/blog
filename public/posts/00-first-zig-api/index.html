@@ -5,12 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>Devlog Buzz | krymancer.dev</title>
+<title>My First Zig API | krymancer.dev</title>
 <meta name="keywords" content="">
-<meta name="description" content="Back in my journey of trying to learn zig on one of those days when I couldn&rsquo;t get myself to sleep I thought, why not make a game using zig? Yes, the question is always &ldquo;why?&rdquo; and the answer is always &ldquo;why not?&rdquo;
-So another one of my phases began, I started looking into some lib or anything that I cloud make an 2d game, I was thinking in using SDL as I already use it in the past with C&#43;&#43;, but I remembered raylib and found out about raylib-zig and was an sign for me to start.">
+<meta name="description" content="There&rsquo;s this event, which is conceived by Zanfranceschi. Essentially, Zan gave us a specification that we followed to implement an API. For this first quarter edition of 2024, we have a kind of &ldquo;Bank&rdquo; where some pre-registered clients check their statements and make transactions. If you want to read more details, I invite you to take a look at the repository of the event, where you can find the specifications along with the rest of the participation instructions and related information.">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/posts/03-devlog-buzz/">
+<link rel="canonical" href="http://localhost:1313/posts/00-first-zig-api/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.64a76f9c1e4a8e02f889b7042db41e893e9ad071054f4d04c46a755b971023a2.css" integrity="sha256-ZKdvnB5KjgL4ibcELbQeiT6a0HEFT00ExGp1W5cQI6I=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
@@ -19,7 +18,7 @@ So another one of my phases began, I started looking into some lib or anything t
 <link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/03-devlog-buzz/">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/00-first-zig-api/">
 <noscript>
     <style>
         #theme-toggle,
@@ -135,35 +134,25 @@ So another one of my phases began, I started looking into some lib or anything t
   <header class="post-header">
     
     <h1 class="post-title entry-hint-parent">
-      Devlog Buzz
+      My First Zig API
     </h1>
-    <div class="post-meta"><span title='2025-07-21 01:27:14 -0300 -03'>July 21, 2025</span>
+    <div class="post-meta"><span title='2024-06-05 20:50:06 -0300 -03'>June 5, 2024</span>
 
 </div>
   </header> 
-  <div class="post-content"><p>Back in my journey of trying to learn zig on one of those days when I couldn&rsquo;t get myself to sleep I thought, why not make a game using zig? Yes, the question is always &ldquo;why?&rdquo; and the answer is always &ldquo;why not?&rdquo;</p>
-<p>So another one of my phases began, I started looking into some lib or anything that I cloud make an 2d game, I was thinking in using <a href="https://libsdl.org/">SDL</a> as I already use it in the past with C++, but I remembered <a href="https://www.raylib.com/index.html">raylib</a> and found out about <a href="https://github.com/Not-Nik/raylib-zig">raylib-zig</a> and was an sign for me to start.</p>
-<p>I don&rsquo;t remember how much thought I put in the game idea, but I come up with and management game where you have to try and keep the game running for the most time you can. I was aiming for something simple, both to play and to implement. So I come up with buzzness-tyccon</p>
-<p><img loading="lazy" src="/attachments/Pasted%20image%2020250722175220.png"></p>
-<p>I spent the majority of the early stages of the time working to make the isometric grid, being isometric was the core concept of the idea, for some reason I was way into it. I though that was going to be much simple that it was. It involved some math, the math wasn&rsquo;t so bad, but I was making it harder for myself not really understanding zig and mixing int numbers and floats, I will make a more in depth devlog about the grid system and the isometric rendering because is so interesting, but it needs a separated post.</p>
-<p>Other nice part that I implemented was the flowers, I made some assets in aesprite, I did make the grid tile (the grass cube) sprite in aesprite as well. I implemented three types of flowers, each one with 4 different stages of maturity, and with a simple bee sprite and a random walk in direction of the nearest fully grown flower I have the basic concept of the game working.</p>
-<p>Fully grown flowers produces pollen that bees would harvest to make honey and you can produce more bees. This was the frist PoC that I got from the game. I really liked and iterations later I have something that I liked, this includes some features like:</p>
-<ul>
-<li>camera movements, drag to move and zoom</li>
-<li>bees that got pollen will spawn more flowers randomly</li>
-<li>bees and flowers have an lifespan (the idea here is that if all flowers die, is game over)</li>
-<li>move entities to use a grid system (more on this in another post)</li>
-</ul>
-<p>And I do have somethings planned to work one:</p>
-<ul>
-<li>Refactoring entities to use ECS (Entity Component System)</li>
-<li>Using an event system instead of checking in main update event loop</li>
-<li>Configuration system, removing magic numbers and allow users to select screen size, and other configurations both via ui and settings file</li>
-<li>Error handling</li>
-<li>Better in-game debug tools</li>
-</ul>
-<p>I will make more posts about both what I already made to this game and some of these improvements, in the mean time fell free to <a href="https://github.com/Krymancer/buzzness-tycoon/">check the game repo</a> any suggestions and help is appreciated.</p>
-<p>Peace out nerds.</p>
+  <div class="post-content"><p>There&rsquo;s this event, which is conceived by Zanfranceschi. Essentially, Zan gave us a specification that we followed to implement an API. For this first quarter edition of 2024, we have a kind of &ldquo;Bank&rdquo; where some pre-registered clients check their statements and make transactions. If you want to read more details, I invite you to take a look at the repository of the <a href="https://github.com/zanfranceschi/rinha-de-backend-2024-q1">event</a>, where you can find the specifications along with the rest of the participation instructions and related information.</p>
+<p>With the API created, the idea is to use a load balancer to manage two instances of the API. This edition focuses on data consistency. We used docker-compose to deploy images for the instances, the load balancer, and also a database. As of the writing of this article (07/03/2024), we still don&rsquo;t have what will be used to obtain the results from each API. However, for now, we&rsquo;re using <a href="https://gatling.io/">Gatling</a> to conduct stress tests and some validations, and we&rsquo;re using p75 to get an idea of how the API behaves (if you&rsquo;re not familiar with p75, take a look <a href="https://en.wikipedia.org/wiki/Percentile">here</a>).</p>
+<p>The first thing I usually do to solve this kind of thing is to create the API in memory for some initial tests, mainly for validation purposes and to check if everything is okay and according to the specification. At this point, I had already decided to write the API in a language I didn&rsquo;t have much experience with, such as Go, Rust, or Zig. But looking at the other submissions, there were already many APIs in Go and Rust, so I tried to diversify and chose Zig. Considering that I already had experience in Rust and Go, it would be interesting to write my first program in Zig.</p>
+<p><a href="https://ziglang.org/">Zig</a> is a relatively new language, so not all of its content and documentation are as elaborate. I relied extensively on reading and understanding source code. Despite everything, Zig has a <a href="https://ziglang.org/documentation/master/std/#A;std">Std lib</a> that is quite comprehensive. That&rsquo;s where I started my adventure. I tried to use <a href="https://ziglang.org/documentation/master/std/#A;std:http">std.http</a>, and I didn&rsquo;t have a very good experience with it. The API isn&rsquo;t very beginner-friendly, so I tried to look for a framework. The first framework I tried to use was <a href="https://github.com/zigzap/zap/">Zap</a>, which is much easier to use than std.http. However, I missed some features, such as the utilization of router parameters, but nothing that prevented me from using it. I wrote a small URL parser with <a href="https://ziglang.org/documentation/master/std/#A;std:zig.Tokenizer">std.Tokenizer</a> (as I mentioned, the std lib is quite comprehensive), and I managed to make the first functional version of the API with in-memory data.</p>
+<p>But then the self-inflicted issues started: memory leaks, deadlocks, and inconsistencies because I wasn&rsquo;t using locks or anything in the requests. Even though this had nothing to do with the framework, I ended up looking for another framework and stumbled upon <a href="https://github.com/karlseguin/http.zig/">http.zig/httpz</a>, which the developer <a href="https://github.com/karlseguin">karlseguin</a> also had a <a href="https://github.com/karlseguin/pg.zig">library to use with Postgres</a>, which was the database I already planned to use.</p>
+<p>The migration was quite smooth, mainly because there wasn&rsquo;t really a migration; I decided to start from scratch, <a href="https://github.com/Krymancer/rinha-de-backend-2024-q1-zig/commit/150847e36e4760e4951468b85aca32b4cf2ab61f">as you can see in this commit</a>. But that wasn&rsquo;t a bad thing; with the knowledge I had gained using Zap, I was much faster and managed to implement everything back in record time.</p>
+<p>The connection with the database was also very smooth; I owe a lot to <a href="https://github.com/karlseguin">karlseguin</a> for making everything easier with his libraries. I didn&rsquo;t have any problems integrating the API with the database; the only part where I had some difficulty was using the record type from Postgres, which was returned by a stored procedure I was using in the database. Since the API had a method to receive raw data, I &ldquo;solved&rdquo; this problem by writing a small parser that used <a href="https://ziglang.org/documentation/master/std/#A;std:mem.readInt">std.mem.readInt</a> to convert the bytes into integers, as that was all I needed. But since I wasn&rsquo;t sure if this was a good idea, I created an <a href="https://github.com/karlseguin/pg.zig/issues/11">issue in the pg.zig repo</a> to ask, and within hours, the creator of the library made a PR that made using Postgres records trivial (as always, karlseguin saved me).</p>
+<p>After solving these problems, I created a docker-compose along with a database and an instance of Nginx and started performing stress tests.</p>
+<p>Not surprisingly, I had some more memory leaks, which was to be expected in my first experience; it&rsquo;s also been a few years since I programmed in C++ and C, so I was rusty. I managed to avoid the leak and a deadlock by deallocating a result from a database query that I had forgotten about and also deallocating an array list (similar to the vector in C++).</p>
+<p>With these changes, I managed to achieve incredible results, in my opinion.</p>
+<p><img alt="Image description" loading="lazy" src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/5l7bqakj8xccu2nan8dm.jpeg"></p>
+<p>4ms p75, much better than I anticipated.</p>
+<p>I just want to thank Zanfranceschi, Karlseguin, and the Zig community on Discord, where some people answered some of my doubts. Writing this API in Zig was a great experience, and I really loved the language, and I hope to create many cool things with it in the future!</p>
 
 
   </div>
