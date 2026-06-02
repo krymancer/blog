@@ -1,0 +1,23 @@
+---
+title: 'Back to Arch'
+date: 2025-08-26T02:01:20-03:00
+draft: false
+---
+
+I don't remember exactly when I started to using linux, probably I had my frist real contact in 2014 trying ubuntu, debian and kali. It was years latter, in college, that I tried to run daily. I was so comfortable in windows so I didn't really saw an reason to change. Debian was my first daily option, I was in a class about embedded systems programming and we need to use a gcc cross compiler, some programs to create linux images, copy code to development boards memory and stuff. The professor really wanted us to use linux, my colleges dual booted their machines but I took this as an opportunity to really try to daily drive linux.
+
+I remember spending most of the early days customizing a lot of stuff, learned about dracula and I tried to make everything match. terminal, gtk theme and so much more. It was the beginning of something bigger, I found about atom as well and I really dove head first in the linux world. 
+
+I keep my setup the entire semester and did a clean install of debian in the following semester for the next embedded system class. After a year using linux I had to move to another city, changed campus and major (still an computer engineering tho) switch computers and for some reason, used windows. After that I started a job, C# and you guess it windows. My personal computer, that I only using in my free time in this point, only for games, still using windows. Yeah I know.
+
+But one day I was bored and wanted to do a little recreational programming session, programming on windows was always a pain to me so I was contemplating installing linux on my machine but we had just enter the WSL era, everything was going to change and we had the best of the both worlds, yada, yada, yada, SIKE, WSL1 was horrible and full of little things that drove me mad, so with a little inpiration of unixporn subreddit I installed arch, did my frist rice and besides my background in competitive programming and low level stuff I was doing a lot of hobby projects in web, using javascript (yeah I know). I guess was because I wanted a better paid job, since I was just an intern at this point. This really pay off since about 8 months later I got an job as an fullstack developer in a firm, home office, good sutff, pre covid era. 
+
+At this point I was too busy with work to really care about linux, I was doing C# things and we needed visual studio, and angular (I hate angular just because of this job, the framework can even be good, I DON CARE I HAVE TRAUMA from it) so I have another 2 years on windows, this is already in covid and a little after. 2022 I guess. 
+
+The point of no return is now, in 2023 I got an job and where the company devs used linux, ubuntu in majority. For some reason, the holy hand of an superior being, messing with the starts, aligned the planets so the dell laptop that they sent me would simple not work with ubuntu, crashing docker all the time and the azure bullshit that they installed to sync the accounts didn't work. So on the back of the IT I installed arch, at this point I already have some experience with arch, and messed a lot with WSL2 but everything was spaced and I only like installed riced the system for 2 or 3 days and never touched again. So I don't consider it like full blow experiences. That said, I've been using arch on and dell laptop for about two years I think, and using gnome and I was so happy, everything is snappy and easy, I rarely had problems, bluetooth and multiple monitors worked great. I was happy, but something was missing.
+
+After PewDIePie install arch I also saw an DHH post on X about omarchy, I had use hyprland before, never really got the hype for tiling windows managers, but I got an new laptop and riced using some inspiration from omarchy and I FREAKING LOVE IT, IS LIKE A SUPER POWER, I work on mac now and changing windows and apps is soooooo slow compared with just change to the workspace that I know that I want to go, one weekend was all I need to know what I missed my entire life. I'm not joking, hyprland and arch are the best developer box experience that I know, if one day arch is stable enough to work out of the box with stuff like HDMI and bluetooth headsets like mac I don't think that anyone would need something else. 
+
+I'm writing this because I wanted to be able to replicate my setup more easly so I compiled some hows to and dotfiles that I want to write about so I don't forget, and if it can help somebody as well is an win win situation.
+
+Peace, nerds.

@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { isoDay as day } from '../lib/date';
+
+const posts = (await getCollection('posts'))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+<Base>
+  <ul class="post-list">
+    {
+      posts.map((p) => (
+        <li>
+          <a href={`/posts/${p.id}`}>
+            <time datetime={day(p.data.date)}>{day(p.data.date)}</time>
+            <span class="title">{p.data.title}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</Base>
