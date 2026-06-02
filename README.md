@@ -1,32 +1,55 @@
 # Blog
 
-I really needed to starting writing something so I figured that a blog would be a good idea.
+Personal blog at [krymancer.dev](https://krymancer.dev), built with [Astro](https://astro.build) and a hand-made minimal theme. Deployed to GitHub Pages via GitHub Actions.
 
-## Information
+## Commands
 
-I'm using hugo in this, is a nice tool, I can write it in markdown and will generate the website. I never remember the commands so I wrote them here.
+```sh
+npm install      # install deps
+npm run dev      # local dev server (http://localhost:4321)
+npm run build    # build to ./dist
+npm run preview  # preview the built ./dist
+npm run check    # type-check .astro files
+```
 
-Run server locally
+## Writing posts
 
-> hugo server
+Posts are Markdown files in `src/content/posts/`. Frontmatter (YAML):
 
-Go to the changes
+```yaml
+---
+title: 'My Post Title'
+date: 2026-03-16T23:31:07-03:00
+draft: false   # optional, defaults to false; drafts are excluded from build
+---
+```
 
-> hugo server --navigateToChanged
+The filename (minus `.md`) is the URL slug, e.g. `10-proxmox.md` → `/posts/10-proxmox`.
+To link between posts, use a plain path: `[see this](/posts/03-devlog-buzz)`.
 
-Build and deploy
+## Images (Obsidian)
 
-> hugo
+The repo root is an Obsidian vault. `.obsidian/app.json` is configured so pasted
+images land in `public/attachments/`. A small remark plugin in `astro.config.mjs`
+rewrites `attachments/…`, `./attachments/…`, and `public/attachments/…` image
+paths to absolute `/attachments/…` URLs, so they resolve from any page.
 
+## Deployment
 
-## Obsidian configuration
+Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds with
+`withastro/action` and deploys `./dist` to GitHub Pages. The custom domain is set
+by `public/CNAME` (`krymancer.dev`).
 
-In order to past images in obsidian and using it in the blog posts, we need to obsidian vault be the repo root folder and add this configuration to `.obsidian/app.json`
+## Structure
 
-```json
-{
-  "attachmentFolderPath": "attachments",
-  "useMarkdownLinks": true,
-  "newLinkFormat": "absolute"
-}
-``` 
+```
+src/
+  content/posts/     posts (markdown)
+  content.config.ts  collection schema
+  layouts/           Base.astro, Post.astro
+  components/        Header, Footer, ThemeToggle
+  pages/             index, archive, posts/[...slug], rss.xml
+  lib/date.ts        date formatting (fixed America/Sao_Paulo)
+  styles/global.css
+public/              static assets, attachments, favicons, CNAME
+```

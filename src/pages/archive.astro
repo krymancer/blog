@@ -1,0 +1,36 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { isoDay as day } from '../lib/date';
+
+const posts = (await getCollection('posts'))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const byYear = new Map<number, typeof posts>();
+for (const p of posts) {
+  const y = Number(day(p.data.date).slice(0, 4));
+  if (!byYear.has(y)) byYear.set(y, []);
+  byYear.get(y)!.push(p);
+}
+const years = [...byYear.keys()].sort((a, b) => b - a);
+---
+<Base title="Archive">
+  {
+    years.map((y) => (
+      <section class="archive-year">
+        <h2>{y}</h2>
+        <ul class="post-list">
+          {byYear.get(y)!.map((p) => (
+            <li>
+              <a href={`/posts/${p.id}`}>
+                <time datetime={day(p.data.date)}>{day(p.data.date)}</time>
+                <span class="title">{p.data.title}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))
+  }
+</Base>
