@@ -85,6 +85,16 @@ a:hover {
   color: var(--fg);
 }
 
+.site-header nav a.icon {
+  display: inline-flex;
+  border-bottom: none;
+}
+
+.site-header nav a.icon svg {
+  width: 0.95rem;
+  height: 0.95rem;
+}
+
 /* ---- theme toggle ---- */
 #theme-toggle {
   background: none;
