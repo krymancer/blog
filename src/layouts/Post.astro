@@ -5,13 +5,15 @@ import { isoDay, humanDay } from '../lib/date';
 interface Props {
   title: string;
   date: Date;
+  description?: string;
+  image?: string;
 }
 
-const { title, date } = Astro.props;
+const { title, date, description, image } = Astro.props;
 const iso = isoDay(date);
 const human = humanDay(date);
 ---
-<Base title={title}>
+<Base title={title} description={description} image={image} type="article">
   <article>
     <header class="post-header">
       <time datetime={iso}>{human}</time>
