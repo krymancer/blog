@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Post from '../../layouts/Post.astro';
+import { excerpt } from '../../lib/og';
 
 export async function getStaticPaths() {
   const posts = (await getCollection('posts')).filter((p) => !p.data.draft);
@@ -13,6 +14,11 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await render(post);
 ---
-<Post title={post.data.title} date={post.data.date}>
+<Post
+  title={post.data.title}
+  date={post.data.date}
+  description={post.data.description ?? excerpt(post.body)}
+  image={`/og/posts/${post.id}.png`}
+>
   <Content />
 </Post>

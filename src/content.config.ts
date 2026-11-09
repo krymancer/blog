@@ -9,6 +9,8 @@ const posts = defineCollection({
     title: z.string(),
     date: z.coerce.date(),
     draft: z.boolean().default(false),
+    /** Optional summary for link previews; defaults to the first paragraph. */
+    description: z.string().optional(),
   }),
 });
 
