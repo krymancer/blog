@@ -60,7 +60,7 @@ export async function renderOgImage({ title, meta }: { title: string; meta?: str
     ) as any,
     { width: 1200, height: 630, fonts },
   );
-  return new Resvg(svg).render().asPng();
+  return new Uint8Array(new Resvg(svg).render().asPng());
 }
 
 /** First paragraph of a markdown body as plain text, for meta descriptions. */
