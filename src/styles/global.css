@@ -1,7 +1,7 @@
 :root {
   --bg: #fcfcfc;
   --fg: #1a1a1a;
-  --muted: #8a8a8a;
+  --muted: #6e6e6e;
   --rule: #e6e6e6;
   --code-bg: #f0f0f0;
   --sel: #d8d8d8;
@@ -10,7 +10,7 @@
 :root[data-theme='dark'] {
   --bg: #0e0e0e;
   --fg: #e4e4e4;
-  --muted: #777777;
+  --muted: #888888;
   --rule: #232323;
   --code-bg: #1a1a1a;
   --sel: #333333;
